@@ -63,6 +63,6 @@ with con:
 		#If not successful don't delete row and populate status column
 		if r.status_code != requests.codes.ok:
 			print 'failed to download =', local_filename
-			cur.execute('UPDATE queue2 SET status=\'failed\' WHERE file=' url[0])
+			cur.execute('UPDATE queue SET status=\'failed\' WHERE file=\'' + row[0] + "'")
 		
 print 'Finished at:', time.strftime("%X")
