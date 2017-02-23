@@ -8,6 +8,8 @@
 #apt install python-pip
 #pip install requests
 
+#use 'sed -i 's/\r//' downloader.py' to remove any spurious windows characters if editing via notepad++
+
 #Set up SQLite db:
 #sqlite3 queue.db
 #CREATE TABLE sites (id INT NOT NULL PRIMARY KEY, name STRING NULL, username STRING NULL, password STRING NULL);
