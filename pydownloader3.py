@@ -79,6 +79,6 @@ with con:
 			if r.status_code != requests.codes.ok:
 				print 'failed to download =', local_filename
 				#cur.execute('UPDATE queue SET status=\'failed\' WHERE file=\'' + row[0] + "'")
-				cur.execute('UPDATE queue SET status=' + r.status_code + ' WHERE file=\'' + row[0] + "'")
+				cur.execute('UPDATE queue SET status=' + str(r.status_code) + ' WHERE file=\'' + row[0] + "'")
 		
 print 'Finished at:', time.strftime("%X")
