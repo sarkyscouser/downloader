@@ -40,12 +40,9 @@ with con:
 	#print rows
 	for row in rows:
 		url = row[0]
-		#print 'URL=', url
 		user = row[1]
-		#print 'user=', user
 		password = row[2]
-		#print 'password=', password
-		
+				
 		local_filename = url.split('/')[-1] #gets the filename from the last part of the url
 		print 'file name=', local_filename
 		
@@ -54,7 +51,8 @@ with con:
 		if r.status_code == requests.codes.ok: #Requests comes with a built-in status code lookup object for easy reference
 		
 			file_size = int(r.headers['content-length'])
-			print 'file size (int)=', file_size
+			file_size_MB = file_size / 1024 / 1024 #Convert bytes to MB
+			print 'file size (MB)=', file_size_MB
 		
 			chunk = 1024
 			num_bars = int(file_size / chunk)
@@ -67,8 +65,7 @@ with con:
 						f.write(chunk)
 						bar.update(i)
 						i += 1
-						#f.flush() #not sure if this is necessary
-		
+								
 			#Delete row if successful:
 			print '\n' #to put a line between progress bar and next lines
 			print 'deleting db entry=', local_filename
